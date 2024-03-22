@@ -1,10 +1,13 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import {usePathname} from "next/navigation";
+import {useState} from "react";
 
 export default function Navigation() {
     const path: string = usePathname()
+    const [count, setCount] = useState(0);
+
     return (
         <nav>
             <ul>
@@ -13,6 +16,9 @@ export default function Navigation() {
                 </li>
                 <li>
                     <Link href={"/about-us"}>About Us</Link> {path !== "/" ? "🔥" : ""}
+                </li>
+                <li>
+                    <button onClick={() => setCount(count + 1)}>{count}</button>
                 </li>
             </ul>
         </nav>
